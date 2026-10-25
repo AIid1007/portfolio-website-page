@@ -1,0 +1,53 @@
+[
+  {
+    "type": "photo",
+    "file": "sunset-watch",
+    "title": "[Place, time]",
+    "theme": "People",
+    "alt": "Silhouette of a woman with long hair sitting on shore rocks, watching two fishing boats on a violet sea under a burning orange sunset sky",
+    "story": "[Optional story line: one sentence about the moment.]",
+    "date": ""
+  },
+  {
+    "type": "photo",
+    "file": "cast-net",
+    "title": "[Place, time]",
+    "theme": "Street",
+    "alt": "Black and white photo of a fisherman on sea rocks swinging a cast net as a wave breaks in white spray behind him",
+    "story": "",
+    "date": ""
+  },
+  {
+    "type": "fact",
+    "text": "[Your gatekept fact, in one line]",
+    "source": "",
+    "draft": true
+  },
+  {
+    "type": "photo",
+    "file": "saree-shore",
+    "title": "[Place, time]",
+    "theme": "People",
+    "alt": "Sepia photo of a woman in a silk saree standing at the edge of the surf on a quiet beach, looking out to sea, palm trees and houses behind",
+    "story": "",
+    "date": ""
+  },
+  {
+    "type": "photo",
+    "file": "old-pier",
+    "title": "[Place, time]",
+    "theme": "Things",
+    "alt": "A weathered old pier with two lamp posts reaching into a grey-green sea under a blue sky with soft clouds, a small wave rolling in",
+    "story": "",
+    "date": ""
+  },
+  {
+    "type": "photo",
+    "file": "two-bulbuls",
+    "title": "[Place, time]",
+    "theme": "Things",
+    "alt": "Two crested grey bulbuls perched on a thin vine among green leaves against a soft blurred green background",
+    "story": "",
+    "date": ""
+  }
+]

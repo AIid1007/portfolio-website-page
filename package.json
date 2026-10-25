@@ -1,0 +1,19 @@
+{
+  "name": "colorsoframki-portfolio",
+  "private": true,
+  "type": "module",
+  "description": "#colorsoframki photography portfolio — static site for GitHub Pages",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:drafts": "node scripts/build.mjs --drafts",
+    "preview": "node scripts/build.mjs --drafts && node scripts/serve.mjs",
+    "prepare-photo": "node scripts/prepare.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "exif-reader": "^2.0.3",
+    "sharp": "^0.33.5"
+  }
+}
