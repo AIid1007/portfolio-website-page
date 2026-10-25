@@ -356,11 +356,17 @@
   });
 
   // ---------- start ----------
-  let rw = innerWidth, wasPhone = phone.matches;
+  let rw = innerWidth, rh = innerHeight, wasPhone = phone.matches;
   addEventListener('resize', () => {
     if (!V.hidden) fit(list[idx]);
-    if (phone.matches !== wasPhone || Math.abs(innerWidth - rw) > 120) { wasPhone = phone.matches; rw = innerWidth; arrange(false); }
-    else { computeHome(); apply(); }
+    if (phone.matches !== wasPhone || Math.abs(innerWidth - rw) > 120 || Math.abs(innerHeight - rh) > 120) {
+      wasPhone = phone.matches; rw = innerWidth; rh = innerHeight; arrange(false);
+    } else { // small resize: keep the walk where it is, relative to the new centre
+      const old = home;
+      computeHome();
+      view.x += home.x - old.x; view.y += home.y - old.y;
+      apply();
+    }
   });
   let started = false;
   const start = () => { if (started) return; started = true; arrange(false); if (location.hash === '#index') showView('index'); };
