@@ -10,7 +10,24 @@ src/                  styles + scripts (canvas, viewer, about, protection)
 scripts/              build.mjs, prepare.mjs, serve.mjs
 ```
 
-## Add a photo (about 5 minutes)
+## Add photos from the browser: the Studio (easiest)
+
+Open **`/admin/`** on the live site (it's unlisted and hidden from Google), e.g.
+`https://aiid1007.github.io/portfolio-website-page/admin/`
+
+1. **One-time:** create a GitHub fine-grained access token (Settings → Developer settings → Personal access tokens →
+   Fine-grained tokens), limited to this repository only, with **Contents: Read and write** and nothing else.
+   Paste it into the Studio and tick "remember on this device" if it's your own computer.
+2. Choose photos. Your browser resizes them, bakes in the `#colorsoframki` watermark, drops all camera/GPS data
+   and writes your copyright into the JPEGs. **Originals never leave your device.**
+3. Fill in title, theme and alt text (required), plus an optional story line and date.
+4. Reorder, edit or delete photos and facts in "On the site", then press **publish changes**.
+   That makes one commit; the site rebuilds in a few minutes.
+
+Use Chrome, Edge or Firefox (Safari can't make WebP images). Anyone can open the page, but nothing
+works without your token. Treat the token like a password, and revoke it on GitHub if a device is lost.
+
+## Add a photo from the command line
 
 1. Keep the original on your own drive. **Never commit originals.**
 2. Run the prepare script on it (needs Node 20+ and `npm install` once):

@@ -10,6 +10,8 @@
   "travel": "[Available to travel: yes / no]",
   "siteUrl": "",
   "basePath": "",
+  "repo": "AIid1007/portfolio-website-page",
+  "branch": "main",
   "ogImage": "sunset-watch",
   "description": "[Your Name] is a street, people and product photographer based in [City]. Stories hiding in simple moments. #colorsoframki",
   "rotatingLines": [
@@ -21,17 +23,39 @@
   ],
   "bio": "[60 to 100 word bio: who you are, what you photograph (street, people, things), the city or region you work in, and how you see a moment as a story.]",
   "portrait": "",
-  "tamil": { "word": "கணம்", "translit": "kaṇam, a moment.", "line": "Simple on the surface, a story underneath." },
+  "tamil": {
+    "word": "கணம்",
+    "translit": "kaṇam, a moment.",
+    "line": "Simple on the surface, a story underneath."
+  },
   "services": [
-    { "name": "Street and people portraits", "status": "on request" },
-    { "name": "Things and still life", "status": "on request" },
-    { "name": "Real estate", "status": "soon" },
-    { "name": "Product", "status": "soon" }
+    {
+      "name": "Street and people portraits",
+      "status": "on request"
+    },
+    {
+      "name": "Things and still life",
+      "status": "on request"
+    },
+    {
+      "name": "Real estate",
+      "status": "soon"
+    },
+    {
+      "name": "Product",
+      "status": "soon"
+    }
   ],
   "form": {
     "_readme": "provider: null (opens the visitor's email app), \"formspree\" (id = the part after /f/), or \"web3forms\" (id = access key).",
     "provider": null,
     "id": ""
   },
-  "themes": ["Street", "People", "Things", "Real estate", "Product"]
+  "themes": [
+    "Street",
+    "People",
+    "Things",
+    "Real estate",
+    "Product"
+  ]
 }

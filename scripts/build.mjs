@@ -351,13 +351,92 @@ const notFound = `${head({ title: `Lost the light | ${config.handle}`, descripti
 </html>
 `;
 
+// ---------- admin (unlisted, noindex) ----------
+const adminData = {
+  base: BASE,
+  repo: config.repo,
+  branch: config.branch || 'main',
+  themes: config.themes,
+  handle: config.handle,
+  name: config.name,
+  tileEdge: TILE_EDGE,
+  viewEdge: VIEW_EDGE,
+};
+const admin = `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' blob: data:; connect-src https://api.github.com; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Admin | ${esc(config.handle)}</title>
+<link rel="icon" href="${url('/assets/favicon.svg')}" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Manrope:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="${url('/assets/styles.css')}">
+<link rel="stylesheet" href="${url('/assets/admin.css')}">
+</head>
+<body class="admin">
+<header class="bar top">
+  ${logo}
+  <nav class="nav"><span class="ad-tag">admin</span><a href="${url('/')}" target="_blank" rel="noopener">view site ↗</a></nav>
+</header>
+<main class="ad">
+  <section class="ad-card" id="connect">
+    <h1>Studio</h1>
+    <p class="ad-lead">Add, edit and reorder photos. Originals stay on this device: your browser makes the protected copies (resized, watermarked, location data removed) and only those are published.</p>
+    <form class="ad-token" autocomplete="off">
+      <label><span class="label">GitHub access token</span><input type="password" name="token" placeholder="github_pat_…" spellcheck="false"></label>
+      <label class="ad-check"><input type="checkbox" name="remember"> remember on this device</label>
+      <div class="ad-row"><button class="send" type="submit">connect</button><button class="ad-link" type="button" data-forget hidden>forget token</button></div>
+      <p class="status" role="status" aria-live="polite"></p>
+      <details class="ad-help"><summary>How do I get a token?</summary>
+        <ol>
+          <li>On GitHub, open <b>Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token</b>.</li>
+          <li>Repository access: <b>Only select repositories</b> → <code>${esc(config.repo)}</code>.</li>
+          <li>Permissions → Repository permissions → <b>Contents: Read and write</b>. Nothing else.</li>
+          <li>Pick an expiry, generate, and paste it here. Treat it like a password.</li>
+        </ol>
+      </details>
+    </form>
+  </section>
+
+  <div class="ad-work" hidden>
+    <section class="ad-card">
+      <div class="ad-head"><h2>Add photos</h2></div>
+      <label class="ad-drop">
+        <input type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/avif" multiple>
+        <span><b>Choose photos</b> or drop them here</span>
+        <small>JPEG, PNG or WebP. Use Chrome, Edge or Firefox.</small>
+      </label>
+      <div class="ad-new"></div>
+    </section>
+
+    <section class="ad-card">
+      <div class="ad-head"><h2>On the site</h2><button type="button" class="ad-link" data-add-fact>+ add a "did you know" fact</button></div>
+      <p class="ad-hint">Order here is the order on the site. Changes are saved only when you publish.</p>
+      <ol class="ad-list"></ol>
+    </section>
+  </div>
+</main>
+<div class="ad-publish" hidden>
+  <p class="ad-summary"></p>
+  <button type="button" class="send" data-publish>publish changes</button>
+</div>
+<script type="application/json" id="admin-data">${JSON.stringify(adminData).replace(/</g, '\\u003c')}</script>
+<script src="${url('/assets/admin.js')}" defer></script>
+</body>
+</html>
+`;
+
 // ---------- write ----------
 fs.rmSync(DIST, { recursive: true, force: true });
 const write = (rel, s) => { const f = path.join(DIST, rel); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, s); };
 write('index.html', home);
 write('about/index.html', about);
 write('404.html', notFound);
-write('robots.txt', `User-agent: *\nAllow: /\nDisallow: ${url('/g/')}\n\nSitemap: ${abs(url('/sitemap.xml'))}\n`);
+write('admin/index.html', admin);
+write('robots.txt', `User-agent: *\nAllow: /\nDisallow: ${url('/g/')}\nDisallow: ${url('/admin/')}\n\nSitemap: ${abs(url('/sitemap.xml'))}\n`);
 const today = new Date().toISOString().slice(0, 10);
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
